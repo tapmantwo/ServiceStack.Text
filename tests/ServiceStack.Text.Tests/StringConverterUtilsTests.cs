@@ -88,5 +88,12 @@ namespace ServiceStack.ServiceModel.Tests
 			Assert.That(result, Is.EquivalentTo(value.Items));
 		}
 
+        [Test]
+	    public void Create_from_GuidEnumerable()
+        {
+            IEnumerable<Guid> list = new[] { new Guid("a7bc4846-ec70-4d8a-bda3-22a8d35d0d4e"), new Guid("ee8fc7a5-a0e2-48fa-b315-93bf8c6ed937") };
+            var convertedValue = TypeSerializer.SerializeToString(list);
+            Assert.AreEqual("[a7bc4846-ec70-4d8a-bda3-22a8d35d0d4e,ee8fc7a5-a0e2-48fa-b315-93bf8c6ed937]", convertedValue);
+        }
 	}
 }
